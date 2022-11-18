@@ -6,25 +6,43 @@ let direction = null;
 let x = 100;
 let y = 250;
 
-if (direction === 'north') {
+function moveCharacter() {
+    if (direction === 'north') {
     y = y + 1
 }
 
-if (direction === 'east') {
+    if (direction === 'east') {
     x = x + 1
 }
 
-if (direction === 'south') {
+    if (direction === 'south') {
     y = y - 1
 }
 
-if (direction === 'west') {
+    if (direction === 'west') {
     x = x - 1
 }
 character.style.left = x + 'px'
 character.style.bottom = y + 'px'
+}
 move(character).to(100, 250)
 
+setInterval(moveCharacter, 1)
+
+document.addEventListener('keydown', function (e) {
+    if (e.key === 'ArrowUp') {
+        direction = 'north'
+    }
+    if (e.key === 'ArrowDown') {
+        direction = 'south'
+    }
+    if (e.key === 'ArrowLeft') {
+        direction = 'west'
+    }
+    if (e.key === 'ArrowRight') {
+        direction = 'east'
+    }
+})
 
 move(newImage('assets/tree.png')).to(200, 450)
 move(newImage('assets/pillar.png')).to(350, 250)
