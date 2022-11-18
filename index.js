@@ -30,6 +30,8 @@ move(character).to(100, 250)
 setInterval(moveCharacter, 1)
 
 document.addEventListener('keydown', function (e) {
+    if (e.repeat) return;
+
     if (e.key === 'ArrowUp') {
         direction = 'north'
     }
@@ -42,6 +44,10 @@ document.addEventListener('keydown', function (e) {
     if (e.key === 'ArrowRight') {
         direction = 'east'
     }
+})
+
+document.addEventListener ('keyup', function (e) {
+    direction = null
 })
 
 move(newImage('assets/tree.png')).to(200, 450)
